@@ -1,15 +1,32 @@
 import React from "react";
-import { PageHeader, Row, Col } from "react-bootstrap";
+import { PageHeader, Row, Col, Grid, Image } from "react-bootstrap";
 import CoverContainer from "../../containers/CoverContainer";
+import Typing from "react-typing-animation";
+
+import carrer from "../images/carrer_coach.jpg";
 
 export default class HomePage extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      curriculo: "",
+      title: ""
+    };
+  }
+
   render() {
     return (
       <div>
         <Col sm={10} md={12} lg={12}>
           <PageHeader>
             Carrer Coach
-            <small>Subtext for header</small>
+            <br />
+            <small>
+              <Typing>
+                <span>Uma frase de efeito bem legal aqui.</span>
+              </Typing>
+            </small>
           </PageHeader>
         </Col>
         <Row>
@@ -76,40 +93,75 @@ export default class HomePage extends React.Component {
               </Col>
             </Col>
           </Row>
+          <Grid>
+            <Row>
+              <Col xs={6} md={4} lg={3}>
+                <Image
+                  src={carrer}
+                  circle
+                  responsive
+                  onClick={() => {
+                    this.setState({
+                      curriculo: ` O currículo é seu cartão de visitas ele deve apresentar seus
+                    conhecimentos, habilidades e experiências de vida ou
+                    profissionais. Para tal, deverá ser sintético, limpo e sem
+                    erros ortográficos. Não esqueça de periodicamente o atualizar,
+                    isso é muito importante, pois vivemos em um mundo globalizado
+                    e em permanente mudanças.`,
+                      title: `Currículo`
+                    });
+                  }}
+                />
+              </Col>
+              <Col xs={6} md={4} lg={3}>
+                <Image
+                  src={carrer}
+                  circle
+                  responsive
+                  onClick={() => {
+                    this.setState({
+                      curriculo: ` Não é porque você nunca trabalhou que deverá se descuidar do
+                      seu currículo, pois existem pontos como sua formação,
+                      vivências que são de grande importância para o seu potencial
+                      empregador. Nem sempre é fácil esta elaboração, por isso
+                      contar com um especialista é de extrema relevância, fazer um
+                      diagnóstico de suas potencialidades e possíveis oportunidades
+                      inclui o processo.`,
+                      title: `Currículo primeiro emprego`
+                    });
+                  }}
+                />
+              </Col>
+              <Col xs={6} md={4} lg={3}>
+                <Image
+                  src={carrer}
+                  circle
+                  responsive
+                  onClick={() => {
+                    this.setState({
+                      curriculo: ` Atualmente muitos profissionais tem se interessado pela
+                      carreira acadêmica está transição ou até trabalho concomitante
+                      a vida corporativa, as vezes é um pouco complicado. Os
+                      critérios para a vida acadêmica são outros, que não excluem a
+                      vida corporativa, mais vão bem além, dessa esfera. Cursos de
+                      aprimoramento, atividades acadêmicas e voluntariados incluem a
+                      carreira acadêmica que possui um currículo diferenciado. Conte
+                      com nossa assessoria para a elaboração do seu currículo
+                      acadêmico.`,
+                      title: `Currículo acadêmico`
+                    });
+                  }}
+                />
+              </Col>
+            </Row>
+          </Grid>
+          ;
           <Row>
             <Col sm={12} md={12} lg={12}>
               <Col smOffset={1} mdOffset={1} lgOffset={1} sm={8} md={8} lg={8}>
-                <h2>Currículo</h2>
-                <p className="text-fluid">
-                  O currículo é seu cartão de visitas ele deve apresentar seus
-                  conhecimentos, habilidades e experiências de vida ou
-                  profissionais. Para tal, deverá ser sintético, limpo e sem
-                  erros ortográficos. Não esqueça de periodicamente o atualizar,
-                  isso é muito importante, pois vivemos em um mundo globalizado
-                  e em permanente mudanças.
-                </p>
-                <h2>Currículo primeiro emprego</h2>
-                <p className="text-fluid">
-                  Não é porque você nunca trabalhou que deverá se descuidar do
-                  seu currículo, pois existem pontos como sua formação,
-                  vivências que são de grande importância para o seu potencial
-                  empregador. Nem sempre é fácil esta elaboração, por isso
-                  contar com um especialista é de extrema relevância, fazer um
-                  diagnóstico de suas potencialidades e possíveis oportunidades
-                  inclui o processo.
-                </p>
-                <h2>Currículo acadêmico</h2>
-                <p className="text-fluid">
-                  Atualmente muitos profissionais tem se interessado pela
-                  carreira acadêmica está transição ou até trabalho concomitante
-                  a vida corporativa, as vezes é um pouco complicado. Os
-                  critérios para a vida acadêmica são outros, que não excluem a
-                  vida corporativa, mais vão bem além, dessa esfera. Cursos de
-                  aprimoramento, atividades acadêmicas e voluntariados incluem a
-                  carreira acadêmica que possui um currículo diferenciado. Conte
-                  com nossa assessoria para a elaboração do seu currículo
-                  acadêmico.
-                </p>
+                <h2>{this.state.title}</h2>
+                <p className="text-fluid">{this.state.curriculo}</p>
+
                 <PageHeader>
                   <small>
                     Na assessoria de carreira você receberá o ferramental
